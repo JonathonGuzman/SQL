@@ -1,0 +1,24 @@
+--Create a grocery store database
+
+CREATE TABLE store(id  INTEGER PRIMARY KEY, name TEXT, price INTEGER, aisle INTEGER, type TEXT);
+
+INSERT INTO store VALUES(1, "games", 60, 8, "electronics");
+INSERT INTO store VALUES(2, "phones", 850, 8, "electronics");
+INSERT INTO store VALUES(3, "pizza", 6, 2, "food" );
+INSERT INTO store VALUES(4, "ham", 3, 2, "food");
+INSERT INTO store VALUES(5, "milk", 3, 10, "dairy");
+INSERT INTO store VALUES(6, "books", 15, 3, "read");
+INSERT INTO store VALUES(7, "x-box", 400, 8, "electronics");
+INSERT INTO store VALUES(8, "PS4", 400, 8, "electronic");
+INSERT INTO store VALUES(9, "switch", 300, 8,"electronic");
+INSERT INTO store VALUES(10, "Toys",16, 7, "toys");
+INSERT INTO store VALUES(11, "boxes", 12, 12, "storage");
+INSERT INTO store VALUES(12, "tape" , 12, 12, "storage");
+INSERT INTO store VALUES(13, "ribs", 15, 3, "meats");
+INSERT INTO store VALUES(14, "eggs", 2, 10, "dairy");
+INSERT INTO store VALUES(15, "Comics", 15, 3, "read");
+
+--display the database ordered by price
+
+SELECT * FROM store
+ORDER BY price;
