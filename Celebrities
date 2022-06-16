@@ -1,0 +1,79 @@
+CREATE TABLE celebrity (
+    id_celebrity INTEGER,
+    occupation_input TEXT,
+    fullname TEXT,
+    last_name TEXT,
+    birthdate TEXT
+    );
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'a', "Michael", "Jordan", "02-17-1963");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (2, 'b',  "Freddie", "Mercury", "09-05-1946");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'c', "Dale", "Earnhardt Jr.", "10-10-1974");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (3, 'd', "Sarah", "Hyland", "11-24-1990");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (3, 'e', "Scarlett", "Johansson", "11-22-1984");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'a', "Scottie", "Pippen", "11-25-1965");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'a', "Steve", "Kerr", "11-27-1965");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (2, 'b', "Brian", "May", "07-19-1947");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (2, 'b', "John", "Deacon", "08-19-1951");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (0, '0', "George", "Washington", "02-22-1732");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'f', "Lionel", "Messi", "06-24-1987");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (1, 'a', "Derek", "Rose", "09-04-1988");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (0, '0', "Donald", "Trump", "06-14-1946");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (0, '0', "Joe", "Biden", "11-20-1942");
+INSERT INTO celebrity (id_celebrity, occupation_input, fullname, last_Name, birthdate)
+VALUES (0, '0', "Bob", "Ross", "10-29-1942");
+
+CREATE TABLE occupation (
+    id INTEGER,
+    job_name TEXT
+    );
+INSERT INTO occupation (id, job_name)
+VALUES (1, "Athlete");
+INSERT INTO occupation (id, job_name)
+VALUES (2, "Musician");
+INSERT INTO occupation (id, job_name)
+VALUES (3, "Actor");
+
+CREATE TABLE title (
+    id TEXT, 
+    title_name TEXT
+    );
+INSERT INTO title (id, title_name)
+VALUES ('a', "Chicago Bulls");
+INSERT INTO title (id, title_name)
+VALUES ('b', "Queen");
+INSERT INTO title (id, title_name)
+VALUES ('c', "JR Motorsports");
+INSERT INTO title (id, title_name)
+VALUES ('d', "Modern Family");
+INSERT INTO title (id, title_name)
+VALUES ('e', "Black Widow");
+INSERT INTO title (id, title_name)
+VALUES ('f', "Argentina National Futbol Team");
+
+SELECT celebrity.fullname AS FirstName, celebrity.last_name AS LastName, title.title_name AS KnownFor, occupation.job_name AS Job
+    FROM celebrity
+    LEFT OUTER JOIN occupation
+    ON celebrity.id_celebrity = occupation.id
+    LEFT OUTER JOIN title
+    ON celebrity.occupation_input = title.id
+ORDER BY FirstName ASC;
+
+SELECT celebrity.fullname AS FirstName, celebrity.last_name AS LastName, title.title_name AS Team
+    FROM celebrity
+    JOIN title
+    ON celebrity.occupation_input = title.id
+    WHERE title.title_name = 'Chicago Bulls';
