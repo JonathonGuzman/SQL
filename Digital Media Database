@@ -1,0 +1,35 @@
+(# 1. Show customers who are not in the USA.
+SELECT customers.firstname, customers.lastname, customers.customerid, customers.country
+    FROM chinook.customers
+    WHERE country != 'USA';
+    
+(#2. Find the Invoices of customers who are from Brazil. 
+SELECT customers.firstname, customers.lastname, invoices.InvoiceId, invoices.invoicedate, invoices.billingcountry
+    FROM chinook.customers
+    LEFT JOIN chinook.invoices
+    ON customers.customerid = invoices.customerid
+    WHERE invoices.billingcountry = 'Brazil';
+    
+(#3. List the artist with their albulm name and track name.
+SELECT artists.name, albums.title, tracks.name
+    FROM chinook.artists
+    INNER JOIN chinook.albums
+        ON artists.artistid = albums.artistid
+    INNER JOIN chinook.tracks
+        ON albums.albumid = tracks.albumid
+    ORDER BY artists.name;
+    
+(#4. which employees report to each other?
+SELECT e2.EmployeeId, e2.FirstName, e2.LastName, e2.ReportsTo, e1.FirstName, e1.LastName
+    FROM chinook.employees e1, chinook.employees e2
+    WHERE e1.EmployeeId = e2.ReportsTo;
+
+(#5. Total sales from the sales agents.
+SELECT employees.FirstName, employees.lastname, ROUND(SUM(invoices.total), 2)
+    FROM chinook.employees
+    JOIN chinook.customers
+    ON employees.employeeid = customers.SupportRepId
+    JOIN chinook.invoices
+    ON customers.customerid = invoices.customerid
+    WHERE employees.title = 'Sales Support Agent'
+    GROUP BY employees.FirstName;
