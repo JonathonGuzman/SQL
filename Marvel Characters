@@ -62,7 +62,7 @@ WHERE alignment = 'Bad' ;
 
 SELECT name,
     CASE
-        WHEN fighting_skills > 4 AND strength > 4 THEN "Best               Offensive"
+        WHEN fighting_skills > 4 AND strength > 4 THEN "Best Offensive"
         WHEN durability > 4 AND strength > 4 THEN "Best Defensive"
         WHEN energy_projection > 3 THEN "Best Abilities"
         WHEN intelligence > 4 THEN "Smartest"
